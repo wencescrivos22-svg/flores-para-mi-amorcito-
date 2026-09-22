@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi princesa hermosa 🌻</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Georgia, serif;
+  background: #02020a;
+  color: white;
+}
+
+/* GALAXIA */
+
+#galaxy {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(105,45,170,.30), transparent 35%),
+    radial-gradient(circle at 20% 30%, rgba(40,80,180,.20), transparent 30%),
+    linear-gradient(#02020a, #090313 60%, #020207);
+}
+
+.stars {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    radial-gradient(circle, white 0 1px, transparent 1.5px),
+    radial-gradient(circle, #ffeeb0 0 1px, transparent 1.5px);
+  background-size: 95px 110px, 150px 140px;
+  animation: starsMove 30s linear infinite;
+}
+
+@keyframes starsMove {
+  from {
+    transform: translate(0,0);
+  }
+
+  to {
+    transform: translate(100px,120px);
+  }
+}
+
+.nebula {
+  position: absolute;
+  width: 80vw;
+  height: 45vw;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255,210,70,.15),
+      rgba(130,60,190,.10) 35%,
+      transparent 70%
+    );
+  filter: blur(20px);
+  animation: nebulaPulse 7s ease-in-out infinite;
+}
+
+@keyframes nebulaPulse {
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: .7;
+  }
+}
+
+/* INTRO */
+
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 25px;
+
+  transition: opacity 1.5s ease;
+}
+
+#intro.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-content {
+  max-width: 600px;
+}
+
+.intro-content h1 {
+  font-size: clamp(32px, 8vw, 58px);
+  font-weight: normal;
+  margin-bottom: 15px;
+
+  text-shadow:
+    0 0 15px rgba(255,220,100,.4),
+    0 0 35px rgba(255,200,50,.2);
+}
+
+.intro-content p {
+  color: rgba(255,255,255,.7);
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+#start {
+  padding: 15px 30px;
+
+  border-radius: 50px;
+  border: 1px solid rgba(255,220,100,.7);
+
+  background: rgba(255,205,55,.12);
+  color: #ffe57a;
+
+  font-size: 17px;
+  font-family: Georgia, serif;
+
+  cursor: pointer;
+
+  box-shadow: 0 0 25px rgba(255,200,50,.15);
+
+  transition: .3s;
+}
+
+#start:hover {
+  background: rgba(255,210,60,.25);
+  transform: scale(1.05);
+}
+
+/* FLORES */
+
+#flowers {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.flower {
+  position: absolute;
+
+  width: 70px;
+  height: 220px;
+
+  transform-origin: bottom center;
+
+  opacity: 0;
+}
+
+.flower.grow {
+  animation:
+    growFlower 1.8s cubic-bezier(.2,.8,.2,1) forwards,
+    swayFlower 3.5s ease-in-out infinite 1.8s;
+}
+
+@keyframes growFlower {
+
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+}
+
+@keyframes swayFlower {
+
+  0%,100% {
+    rotate: -2deg;
+  }
+
+  50% {
+    rotate: 3deg;
+  }
+
+}
+
+/* TALLO */
+
+.stem {
+  position: absolute;
+
+  bottom: 0;
+  left: 34px;
+
+  width: 5px;
+  height: 155px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #244817,
+      #73a832,
+      #244817
+    );
+}
+
+/* HOJAS */
+
+.leaf {
+  position: absolute;
+
+  width: 43px;
+  height: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #83ae32,
+    #315f1b
+  );
+
+  border-radius: 100% 0 100% 0;
+}
+
+.leaf.left {
+  left: 2px;
+  bottom: 70px;
+  transform: rotate(20deg);
+}
+
+.leaf.right {
+  left: 30px;
+  bottom: 102px;
+  transform: scaleX(-1) rotate(25deg);
+}
+
+/* FLOR */
+
+.head {
+  position: absolute;
+
+  left: 5px;
+  bottom: 140px;
+
+  width: 60px;
+  height: 60px;
+}
+
+.petal {
+  position: absolute;
+
+  left: 20px;
+  top: 20px;
+
+  width: 25px;
+  height: 37px;
+
+  border-radius: 55% 55% 45% 45%;
+
+  background: linear-gradient(
+    #fff06a,
+    #f5b800
+  );
+
+  transform-origin: 50% 100%;
+
+  box-shadow:
+    0 0 8px rgba(255,210,30,.5);
+}
+
+.p1 { transform: rotate(0deg) translateY(-19px); }
+.p2 { transform: rotate(60deg) translateY(-19px); }
+.p3 { transform: rotate(120deg) translateY(-19px); }
+.p4 { transform: rotate(180deg) translateY(-19px); }
+.p5 { transform: rotate(240deg) translateY(-19px); }
+.p6 { transform: rotate(300deg) translateY(-19px); }
+
+.center {
+  position: absolute;
+
+  left: 20px;
+  top: 20px;
+
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: #70430b;
+
+  box-shadow:
+    0 0 8px #ffc400;
+}
+
+/* MENSAJE FINAL */
+
+#message {
+  position: fixed;
+  inset: 0;
+
+  z-index: 8;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 25px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity 2s ease;
+}
+
+#message.visible {
+  opacity: 1;
+}
+
+.message-content {
+  animation: messageFloat 4s ease-in-out infinite;
+}
+
+@keyframes messageFloat {
+
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
+
+.heart {
+  font-size: 40px;
+  margin-bottom: 20px;
+
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+
+  50% {
+    transform: scale(1.2);
+  }
+
+}
+
+#message h2 {
+  font-size: clamp(36px, 9vw, 70px);
+
+  font-weight: normal;
+
+  line-height: 1.15;
+
+  margin: 0;
+
+  text-shadow:
+    0 0 20px rgba(255,220,80,.5),
+    0 0 45px rgba(255,190,40,.25);
+}
+
+/* TEXTO INFERIOR */
+
+#hint {
+  position: fixed;
+
+  z-index: 20;
+
+  bottom: 20px;
+
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  color: rgba(255,255,255,.45);
+
+  opacity: 0;
+
+  transition: opacity 1s;
+}
+</style>
+</head>
+
+<body>
+
+<!-- GALAXIA -->
+
+<div id="galaxy">
+  <div class="stars"></div>
+  <div class="nebula"></div>
+</div>
+
+<!-- FLORES -->
+
+<div id="flowers"></div>
+
+<!-- PANTALLA INICIAL -->
+
+<div id="intro">
+
+  <div class="intro-content">
+
+    <h1>
+      🌻 Tengo algo para vos...
+    </h1>
+
+    <p>
+      Tocá el botón y dejá que las flores hagan el resto ✨
+    </p>
+
+    <button id="start">
+      Abrir mi regalo 💛
+    </button>
+
+  </div>
+
+</div>
+
+<!-- MENSAJE -->
+
+<div id="message">
+
+  <div class="message-content">
+
+    <div class="heart">
+      💛
+    </div>
+
+    <h2>
+      Para vos,<br>
+      mi princesa hermosa
+    </h2>
+
+  </div>
+
+</div>
+
+<div id="hint">
+  Tocá la pantalla para hacer aparecer más flores 🌻
+</div>
+
+
+<!--
+IMPORTANTE:
+
+Poné el archivo de música en la misma carpeta
+y llamalo exactamente:
+
+i-thought-i-saw-your-face-today.mp3
+-->
+
+<audio
+  id="music"
+  src="i-thought-i-saw-your-face-today.mp3"
+  preload="auto">
+</audio>
+
+
+<script>
+
+const flowers =
+  document.getElementById("flowers");
+
+const intro =
+  document.getElementById("intro");
+
+const message =
+  document.getElementById("message");
+
+const music =
+  document.getElementById("music");
+
+const hint =
+  document.getElementById("hint");
+
+const start =
+  document.getElementById("start");
+
+
+/* CREAR UNA FLOR */
+
+function createFlower(
+  x,
+  bottom,
+  scale,
+  delay
+) {
+
+  const flower =
+    document.createElement("div");
+
+  flower.className = "flower";
+
+  flower.style.left =
+    x + "%";
+
+  flower.style.bottom =
+    bottom + "%";
+
+  flower.style.transform =
+    `scale(${scale})`;
+
+  flower.style.animationDelay =
+    delay + "s";
+
+
+  flower.innerHTML = `
+
+    <div class="stem"></div>
+
+    <div class="leaf left"></div>
+    <div class="leaf right"></div>
+
+    <div class="head">
+
+      <div class="petal p1"></div>
+      <div class="petal p2"></div>
+      <div class="petal p3"></div>
+      <div class="petal p4"></div>
+      <div class="petal p5"></div>
+      <div class="petal p6"></div>
+
+      <div class="center"></div>
+
+    </div>
+  `;
+
+
+  flowers.appendChild(flower);
+
+
+  setTimeout(() => {
+
+    flower.classList.add("grow");
+
+  }, 50);
+
+}
+
+
+/* CREAR CAMPO DE FLORES */
+
+function createField() {
+
+  const positions = [
+    5, 14, 23, 31, 41,
+    50, 59, 68, 77, 87, 96
+  ];
+
+
+  positions.forEach((position, index) => {
+
+    createFlower(
+
+      position,
+
+      5 + Math.random() * 5,
+
+      .55 + Math.random() * .55,
+
+      index * .18
+
+    );
+
+  });
+
+}
+
+
+/* BOTÓN DE INICIO */
+
+start.addEventListener(
+  "click",
+  function() {
+
+    intro.classList.add("hidden");
+
+
+    /*
+      El navegador permite reproducir
+      el audio porque comenzó por
+      una interacción del usuario.
+    */
+
+    music.play().catch(() => {
+      console.log(
+        "No se pudo reproducir el audio."
+      );
+    });
+
+
+    createField();
+
+
+    /*
+      Después de unos segundos
+      aparece el mensaje.
+    */
+
+    setTimeout(() => {
+
+      message.classList.add("visible");
+
+    }, 4200);
+
+
+    setTimeout(() => {
+
+      hint.style.opacity = "1";
+
+    }, 5000);
+
+  }
+);
+
+
+/* TOCAR LA PANTALLA = OTRA FLOR */
+
+document.addEventListener(
+  "click",
+  function(event) {
+
+    if (event.target === start)
+      return;
+
+
+    if (
+      intro.classList.contains("hidden")
+    ) {
+
+      const x =
+        (event.clientX /
+        window.innerWidth) * 100;
+
+
+      createFlower(
+
+        x,
+
+        5 + Math.random() * 4,
+
+        .55 + Math.random() * .65,
+
+        0
+
+      );
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
